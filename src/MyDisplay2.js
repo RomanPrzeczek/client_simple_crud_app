@@ -25,7 +25,8 @@ function MyDisplay2() {
     state: "inactive",
   });
 
-  const urlList = "http://localhost:8000/list";
+  //const urlList = "http://localhost:8000/list";
+  const urlList = "https://romi-simple-crud-server-25938ea88cea.herokuapp.com/list";
 
     //params of delete item
     const [delItem,setDelItem] = useState({
@@ -69,7 +70,8 @@ function MyDisplay2() {
   }
 
   function fetchLimit () {
-    fetch("http://localhost:8000/limit")
+    //fetch("http://localhost:8000/limit")
+    fetch("https://romi-simple-crud-server-25938ea88cea.herokuapp.com/limit")
       .then((res) => res.json())
       .then((data) => setLimit(data.BElimit));
   }
@@ -136,7 +138,8 @@ function MyDisplay2() {
   const handleCloseDetail = () => setDetailModalShow(false);
 
   const getResponse = async(id) => {
-    const response = await fetch(`http://localhost:8000/get/${id}`);
+    //const response = await fetch(`http://localhost:8000/get/${id}`);
+    const response = await fetch(`https://romi-simple-crud-server-25938ea88cea.herokuapp.com/get/${id}`);
     const body = await  response.json();
     //console.log("gotItem BODY>")
     //console.log(body);
@@ -226,16 +229,17 @@ function MyDisplay2() {
 
   // handler delete item
   const getDelResponse = async(id) => {
-    const response = await fetch(`http://localhost:8000/get/${id}`);
+    //const response = await fetch(`http://localhost:8000/get/${id}`);
+    const response = await fetch(`https://romi-simple-crud-server-25938ea88cea.herokuapp.com/get/${id}`);
     const body = await  response.json();
-    console.log(`MyDisplay getDelResponse / fetch get id: ${body}`)
+    //console.log(`MyDisplay getDelResponse / fetch get id: ${body}`)
     return body;
   }
 
   const handleDelete = async(id) => {
     const item = await getDelResponse(id);
     setDelItem(item);
-    console.log(`MyDisplay handleDelete / delItem: ${delItem.name}`);
+    //console.log(`MyDisplay handleDelete / delItem: ${delItem.name}`);
     fetchList()
  };
 

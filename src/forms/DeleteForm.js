@@ -8,7 +8,8 @@ export default function ItemDelete({ onDelete, delItemProps }) {
     const performDelete = async () => {
         console.log(`DelForm performDelete / delItemProps: ${delItemProps.name}`)
 
-        const res = await fetch(`http://localhost:8000/delete`, {
+        //const res = await fetch(`http://localhost:8000/delete`, {
+        const res = await fetch(`https://romi-simple-crud-server-25938ea88cea.herokuapp.com/delete`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -21,7 +22,7 @@ export default function ItemDelete({ onDelete, delItemProps }) {
 
         } else {
             if (typeof onDelete === 'function') {
-                console.log(`DelForm / fetch delitemProps.name: ${delItemProps.name}`);
+                //console.log(`DelForm / fetch delitemProps.name: ${delItemProps.name}`);
                 onDelete(delItemProps.id);
             }
         }
