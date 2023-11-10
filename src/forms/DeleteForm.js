@@ -8,8 +8,7 @@ export default function ItemDelete({ onDelete, delItemProps }) {
     const performDelete = async () => {
         console.log(`DelForm performDelete / delItemProps: ${delItemProps.name}`)
 
-        //const res = await fetch(`http://localhost:8000/delete`, {
-        const res = await fetch(`https://romi-simple-crud-server-25938ea88cea.herokuapp.com/delete`, {
+        const res = await fetch(`http://localhost:8000/delete`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

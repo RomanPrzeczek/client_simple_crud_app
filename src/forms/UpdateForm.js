@@ -46,8 +46,7 @@ export default function UpdateForm({showProps, setUpdateItemShow, updateItemProp
     };
 
     setItemUpdateCall({ state: 'pending' });
-    //const res = await fetch(`http://localhost:8000/update`, {
-    const res = await fetch(`https://romi-simple-crud-server-25938ea88cea.herokuapp.com/update`, {
+    const res = await fetch(`http://localhost:8000/update`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

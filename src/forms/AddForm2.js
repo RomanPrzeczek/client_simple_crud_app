@@ -48,8 +48,7 @@ export default function AddForm2({
     setAddItemCall({ state: "pending" })
 
     const res = await fetch(
-      //`http://localhost:8000/create`,
-      `https://romi-simple-crud-server-25938ea88cea.herokuapp.com/create`,
+      `http://localhost:8000/create`,
       {
         method: "POST",
         headers: {
