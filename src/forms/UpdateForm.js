@@ -46,7 +46,7 @@ export default function UpdateForm({showProps, setUpdateItemShow, updateItemProp
     };
 
     setItemUpdateCall({ state: 'pending' });
-    const res = await fetch(`http://localhost:8000/update`, {
+    const res = await fetch(`https://serversimplecrudapp-production.up.railway.app/update`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

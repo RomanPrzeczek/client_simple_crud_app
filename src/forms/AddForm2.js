@@ -48,7 +48,7 @@ export default function AddForm2({
     setAddItemCall({ state: "pending" })
 
     const res = await fetch(
-      `http://localhost:8000/create`,
+      `https://serversimplecrudapp-production.up.railway.app/create`,
       {
         method: "POST",
         headers: {

@@ -25,7 +25,8 @@ function MyDisplay2() {
     state: "inactive",
   });
 
-  const urlList = "http://localhost:8000/list";
+  //const urlList = "http://localhost:8000/list";
+  const urlList = "https://serversimplecrudapp-production.up.railway.app/list";
 
     //params of delete item
     const [delItem,setDelItem] = useState({
@@ -69,7 +70,7 @@ function MyDisplay2() {
   }
 
   function fetchLimit () {
-    fetch("http://localhost:8000/limit")
+    fetch("https://serversimplecrudapp-production.up.railway.app/limit")
       .then((res) => res.json())
       .then((data) => setLimit(data.BElimit));
   }
@@ -105,7 +106,7 @@ function MyDisplay2() {
                           <Button 
                             type="button" 
                             class="btn btn-primary"
-                            onClick={() => handleUpdateItemShow(dataObj)} // v origu se predava objekt ne id  
+                            onClick={() => handleUpdateItemShow(dataObj)} 
                           >
                             UPDATE
                           </Button>
@@ -136,10 +137,8 @@ function MyDisplay2() {
   const handleCloseDetail = () => setDetailModalShow(false);
 
   const getResponse = async(id) => {
-    const response = await fetch(`http://localhost:8000/get/${id}`);
+    const response = await fetch(`https://serversimplecrudapp-production.up.railway.app/get/${id}`);
     const body = await  response.json();
-    //console.log("gotItem BODY>")
-    //console.log(body);
 
     return body;
   }
@@ -166,8 +165,8 @@ function MyDisplay2() {
         afterAdditemsList.push(addedItem);
         afterAdditemsList.sort(
           function(a, b) {
-            const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-            const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+            const nameA = a.name.toUpperCase(); 
+            const nameB = b.name.toUpperCase(); 
             if (nameA > nameB) {
               return -1;
             }
@@ -175,7 +174,6 @@ function MyDisplay2() {
               return 1;
             }
           
-            // names must be equal
             return 0;
           }
         )
@@ -202,8 +200,8 @@ function MyDisplay2() {
         updatedItemsList.push(inUpdatedItem);
         updatedItemsList.sort(
           function(a, b) {
-            const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-            const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+            const nameA = a.name.toUpperCase(); 
+            const nameB = b.name.toUpperCase(); 
             if (nameA > nameB) {
               return -1;
             }
@@ -211,7 +209,6 @@ function MyDisplay2() {
               return 1;
             }
           
-            // names must be equal
             return 0;
           }
         )
@@ -226,16 +223,14 @@ function MyDisplay2() {
 
   // handler delete item
   const getDelResponse = async(id) => {
-    const response = await fetch(`http://localhost:8000/get/${id}`);
+    const response = await fetch(`https://serversimplecrudapp-production.up.railway.app/get/${id}`);
     const body = await  response.json();
-    //console.log(`MyDisplay getDelResponse / fetch get id: ${body}`)
     return body;
   }
 
   const handleDelete = async(id) => {
     const item = await getDelResponse(id);
     setDelItem(item);
-    //console.log(`MyDisplay handleDelete / delItem: ${delItem.name}`);
     fetchList()
  };
 
