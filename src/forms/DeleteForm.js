@@ -28,9 +28,9 @@ export default function ItemDelete({ onDelete, delItemProps }) {
 
     return (
         <Confirmation
-            title="Smazat položku"
-            message="Opravdu si přejete smazat položku?"
-            confirmText="Smazat"
+            title="Delete item"
+            message="Do you really want to delete this item?"
+            confirmText="Delete"
             onConfirm={performDelete}
         >
             <div>
