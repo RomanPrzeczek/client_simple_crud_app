@@ -3,7 +3,8 @@ import {Card, Button} from "react-bootstrap";
 import Icon from "@mdi/react";
 import {
   mdiLoading,
-  mdiInformationOutline 
+  mdiInformationOutline,
+  mdiGithub
 } from "@mdi/js";
 
 import DetailForm from "./forms/DetailForm";
@@ -11,6 +12,7 @@ import AddForm2 from "./forms/AddForm2";
 import DeleteForm from "./forms/DeleteForm";
 import UpdateForm from "./forms/UpdateForm";
 import InfoPanel from "./forms/InfoPanel";
+import GitInfoPanel from "./forms/GitInfoPanel";
 
 function MyDisplay2() {
 
@@ -25,28 +27,30 @@ function MyDisplay2() {
     state: "inactive",
   });
 
-  //const urlList = "http://localhost:8000/list";
   const urlList = "https://serversimplecrudapp-production.up.railway.app/list";
 
-    //params of delete item
-    const [delItem,setDelItem] = useState({
-        id:"",
-        name:""
-    });
+  //params of delete item
+  const [delItem,setDelItem] = useState({
+    id:"",
+    name:""
+  });
 
-    //params of add item
-    const [limit, setLimit] = useState("100");
-    const [addItemShow, setAddItemShow] = useState({
-      state: false,
-    })
+  //params of add item
+  const [limit, setLimit] = useState("100");
+  const [addItemShow, setAddItemShow] = useState({
+    state: false,
+  })
 
-    //params of update item
-    const [updateItemShow, setUpdateItemShow] = useState({
-      state: false
-    });
+  //params of update item
+  const [updateItemShow, setUpdateItemShow] = useState({
+    state: false
+  });
 
-    // params of info panel showing
-    const [infoShow, setInfoShow] = useState(false);
+  // params of info panel showing
+  const [infoShow, setInfoShow] = useState(false);
+
+  // params of Git info panel showing
+  const [gitInfoShow, setGitInfoShow] = useState(false);
 
   //// HANDLERS -----------------------------------------------------------------------------------------------------------------
   // handler of show list 
@@ -238,6 +242,10 @@ function MyDisplay2() {
  const handleShowInfo = () => setInfoShow(true);
  const handleCloseInfo = () => setInfoShow(false);
 
+ // handler Git info card
+ const handleShowGitInfo = () => setGitInfoShow(true);
+ const handleCloseGitInfo = () => setGitInfoShow(false);
+
   return (
     <div>
       <DetailForm
@@ -261,11 +269,15 @@ function MyDisplay2() {
         showProps={infoShow}
         onHideProps={handleCloseInfo}
       />
+      <GitInfoPanel
+        showProps={gitInfoShow}
+        onHideProps={handleCloseGitInfo}
+      />
         <div class="container" >
           <center>
             <span class="fs-4">
               Simple JavaScript CRUD presentation.
-            </span>
+              <> </>
               <Button
                 type="button"
                 class="btn btn-outline-dark btn-sm"
@@ -273,6 +285,15 @@ function MyDisplay2() {
               >
                 <Icon path={mdiInformationOutline} size={1} />
               </Button>
+              <> </>
+              <Button
+                type="button"
+                class="btn btn-outline-dark btn-sm"
+                onClick={()=>handleShowGitInfo()}
+              >
+                <Icon path={mdiGithub} size={1} />
+              </Button>
+              </span>
            {getItemsList()}
             <div class="row height">
               <Button
